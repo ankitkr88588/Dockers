@@ -1,21 +1,29 @@
+
 # Use Debian as the base image (lighter & stable)
 FROM debian:latest
 
 # Set environment variables
 ENV PYTHONUNBUFFERED=1
 
-# Install essential dependencies
+# Install essential dependencies and Python 3.13
 RUN apt update && apt install -y \
     git \
     curl \
     wget \
     ffmpeg \
-    python3.13 python3.13-venv python3.13-dev python3-pip \
+    yt-dlp \
+    software-properties-common \
+    gnupg \
+    ca-certificates \
+    && curl -fsSL https://deadsnakes.sebastian-ramacher.de/key.asc | gpg --dearmor -o /etc/apt/trusted.gpg.d/deadsnakes.gpg \
+    && echo "deb https://deadsnakes.sebastian-ramacher.de/debian/ $(. /etc/os-release && echo $VERSION_CODENAME) main" > /etc/apt/sources.list.d/deadsnakes.list \
+    && apt update \
+    && apt install -y python3.13 python3.13-dev python3.13-venv python3.13-distutils \
     && rm -rf /var/lib/apt/lists/*
 
-# Install yt-dlp
-RUN python3.13 -m pip install --upgrade pip && \
-    python3.13 -m pip install yt-dlp
+# Install pip for Python 3.13 and yt-dlp
+RUN curl -sS https://bootstrap.pypa.io/get-pip.py | python3.13 \
+    && python3.13 -m pip install --upgrade pip \
 
 # Set working directory
 WORKDIR /app
