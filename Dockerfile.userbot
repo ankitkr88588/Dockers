@@ -12,6 +12,9 @@ libmagic-dev \
     git \
     curl \
     wget \
+apt-utils \
+yt-dlp \ 
+libmagic-dev \
     build-essential \
     libssl-dev \
     zlib1g-dev \

@@ -11,6 +11,8 @@ RUN apt update && apt install -y \
     git \
     curl \
     wget \
+apt-utils \
+yt-dlp \ 
     build-essential \
     libssl-dev \
     libmagic-dev \
