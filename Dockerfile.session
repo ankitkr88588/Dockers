@@ -43,6 +43,7 @@ WORKDIR /app
 
 # Clone the repository only if it doesn't exist
 ARG GITHUB_TOKEN
+RUN echo "Force rebuild $(date)"
 RUN git clone https://${GITHUB_TOKEN}@github.com/nub-coders/Session-gen
 
 # Install required Python packages

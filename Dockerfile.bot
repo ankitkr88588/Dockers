@@ -40,6 +40,7 @@ RUN python3 -m pip install --upgrade pip
 # Set working directory
 WORKDIR /app
 # Clone the repository only if it doesn't exist
+RUN echo "Force rebuild $(date)"
 ARG GITHUB_TOKEN
 RUN git clone https://${GITHUB_TOKEN}@github.com/nub-coders/project-
 
