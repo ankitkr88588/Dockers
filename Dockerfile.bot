@@ -38,7 +38,7 @@ RUN python3 -m pip install --upgrade pip
 WORKDIR /app
 # Clone the repository only if it doesn't exist
 ARG GITHUB_TOKEN
-RUN git clone https://${GITHUB_TOKEN}@github.com/nub-coders/project- .
+RUN git clone https://${GITHUB_TOKEN}@github.com/nub-coders/project-
 
 # Install required Python packages
 RUN python3.13 -m pip install -r project-/requirements.txt

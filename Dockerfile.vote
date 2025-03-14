@@ -40,7 +40,7 @@ WORKDIR /app
 
 # Clone the repository only if it doesn't exist
 ARG GITHUB_TOKEN
-RUN git clone https://${GITHUB_TOKEN}@github.com/nub-coders/Votebot .
+RUN git clone https://${GITHUB_TOKEN}@github.com/nub-coders/Votebot 
 
 # Install required Python packages
 RUN python3.13 -m pip install -r Votebot/requirements.txt
