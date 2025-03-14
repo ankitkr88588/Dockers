@@ -32,10 +32,9 @@ yt-dlp \
 RUN curl https://pyenv.run | bash
 
 # Install Python 3.13.2 using Pyenv
-RUN if ! /root/.pyenv/bin/pyenv versions --bare | grep -q "^3.13.2$"; then \
-        /root/.pyenv/bin/pyenv install 3.13.2; \
-    fi && \
+RUN /root/.pyenv/bin/pyenv install 3.13.2 && \
     /root/.pyenv/bin/pyenv global 3.13.2
+
 # Install yt-dlp
 RUN python3 -m pip install --upgrade pip
 # Set working directory
