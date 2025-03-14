@@ -10,6 +10,7 @@ ENV PATH="$PYENV_ROOT/bin:$PYENV_ROOT/shims:$PATH"
 RUN apt update && apt install -y \
     git \
     curl \
+libmagic-dev \
     wget \
     build-essential \
     libssl-dev \

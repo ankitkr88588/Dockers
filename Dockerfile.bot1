@@ -13,6 +13,7 @@ RUN apt update && apt install -y \
     wget \
     build-essential \
     libssl-dev \
+    libmagic-dev \
     zlib1g-dev \
     libbz2-dev \
     libreadline-dev \
