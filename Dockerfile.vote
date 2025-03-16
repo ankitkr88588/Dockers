@@ -7,7 +7,7 @@ ENV PYENV_ROOT="/root/.pyenv"
 ENV PATH="$PYENV_ROOT/bin:$PYENV_ROOT/shims:$PATH"
 
 # Install system dependencies
-RUN apt update && apt install -y \
+RUN apt update && apt upgrade && apt install -y \
     git \
     curl \
 libmagic-dev \
