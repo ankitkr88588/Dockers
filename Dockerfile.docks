@@ -29,5 +29,5 @@ RUN npm install
 # Expose the required port  
 EXPOSE 5000  
 
-# Start the application using npm run dev  
-CMD ["bash", "-c", "git reset --hard && git pull && npm run dev"]
+# Start the application with auto-update and build on startup  
+CMD ["bash", "-c", "git reset --hard && git pull && npm run build && npm run start"]
