@@ -13,7 +13,7 @@ RUN apt update && apt install -y \
 
 # Clone the GitHub repository (directly into /app)  
 ARG GITHUB_TOKEN  
-RUN git clone https://${GITHUB_TOKEN}@github.com/nub-coders/docker-handler/ .
+RUN git clone https://${GITHUB_TOKEN}@github.com/nub-coders/docker-handler .
 
 # Install required Node.js packages and APIs  
 RUN npm install  
