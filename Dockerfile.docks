@@ -23,14 +23,11 @@ RUN curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add - && \
 ARG GITHUB_TOKEN  
 RUN git clone https://${GITHUB_TOKEN}@github.com/nub-coders/docker-handler/ .  
 
-# Install required Node.js packages and APIs  
+# Install required Node.js packages  
 RUN npm install  
-
-# Build the project  
-RUN npm run build  
 
 # Expose the required port  
 EXPOSE 5000  
 
-# Start the application with auto-update before execution  
-CMD ["bash", "-c", "git reset --hard && git pull && npm run start"]
+# Start the application using npm run dev  
+CMD ["bash", "-c", "git reset --hard && git pull && npm run dev"]
