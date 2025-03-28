@@ -7,31 +7,26 @@ ENV PYENV_ROOT="/root/.pyenv"
 ENV PATH="$PYENV_ROOT/bin:$PYENV_ROOT/shims:$PATH"
 
 # Install system dependencies
-RUN apt update && apt install -y \
-    libmagic-dev \
+RUN apt update  && apt install -y \
+libmagic-dev \
     git \
     curl \
-    apt-utils \
-    yt-dlp \
+apt-utils \
+yt-dlp \ 
     wget \
-    gnupg \
-    ca-certificates \
+libmagic-dev \
     build-essential \
     libssl-dev \
     zlib1g-dev \
     libbz2-dev \
     libreadline-dev \
     libsqlite3-dev \
+    build-essential \
     libffi-dev \
+    zlib1g-dev \
+    libbz2-dev \
     liblzma-dev \
     ffmpeg \
-    && rm -rf /var/lib/apt/lists/*
-
-# Install Tor repository and Tor
-RUN wget -qO- https://deb.torproject.org/torproject.org/A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89.asc | gpg --dearmor | tee /usr/share/keyrings/tor-archive-keyring.gpg >/dev/null \
-    && echo "deb [signed-by=/usr/share/keyrings/tor-archive-keyring.gpg] https://deb.torproject.org/torproject.org bookworm main" | tee /etc/apt/sources.list.d/tor.list \
-    && apt update \
-    && apt install -y tor \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Pyenv
@@ -43,20 +38,16 @@ RUN /root/.pyenv/bin/pyenv install 3.13.2 && \
 
 # Install yt-dlp
 RUN python3 -m pip install --upgrade pip
-
 # Set working directory
 WORKDIR /app
 
 # Clone the repository only if it doesn't exist
 ARG GITHUB_TOKEN
 RUN echo "Force rebuild $(date)"
-RUN git clone https://${GITHUB_TOKEN}@github.com/nub-coders/Nub-bot-hoster
+RUN git clone https://${GITHUB_TOKEN}@github.com/nub-coders/Nub-bot-hoster 
 
 # Install required Python packages
 RUN python3.13 -m pip install -r Nub-bot-hoster/requirements.txt
 
-# Expose Tor SOCKS port
-EXPOSE 9050
-
-# Start script with Tor and auto-update
-CMD ["bash", "-c", "tor & cd /app/Nub-bot-hoster && git reset --hard && git stash && git pull && python3.13 main.py"]
+# Start script with auto-update and prevent git conflicts
+CMD ["bash", "-c", "cd /app/Nub-bot-hoster && git reset --hard && git stash && git pull && python3.13 main.py"]
