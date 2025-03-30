@@ -8,6 +8,7 @@ ENV PATH="$PYENV_ROOT/bin:$PYENV_ROOT/shims:$PATH"
 
 # Install system dependencies
 RUN apt update && apt install -y \
+    git \
     libmagic-dev \
 obfs4proxy \
     curl \
