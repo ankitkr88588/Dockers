@@ -11,11 +11,6 @@ RUN apk update && apk add --no-cache \
     docker-cli \
     docker-cli-buildx
 
-# Set up Docker BuildX
-RUN mkdir -p ~/.docker/cli-plugins && \
-    ln -sf /usr/lib/docker/cli-plugins/docker-buildx ~/.docker/cli-plugins/docker-buildx && \
-    chmod +x ~/.docker/cli-plugins/docker-buildx
-
 # Set working directory
 WORKDIR /app
 
