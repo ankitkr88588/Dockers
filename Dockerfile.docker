@@ -1,5 +1,5 @@
 # Use Alpine Linux as the base image (much smaller than Debian)
-FROM alpine:latest
+FROM node:current-alpine
 
 # Install system dependencies using Alpine's package manager
 RUN apk update && apk add --no-cache \
@@ -7,10 +7,8 @@ RUN apk update && apk add --no-cache \
     curl \
     wget \
     build-base \
-    nodejs \
-    npm \
     bash \
-    docker-cli   # <-- Added here
+    docker-cli
 
 # Set working directory
 WORKDIR /app
@@ -19,9 +17,6 @@ WORKDIR /app
 RUN echo "Force rebuild $(date)"
 ARG GITHUB_TOKEN
 RUN git clone https://${GITHUB_TOKEN}@github.com/nub-coders/docker-handler/ .
-
-# Install Node.js dependencies and build frontend
-RUN npm install
 
 # Make directory for logs
 RUN mkdir -p /var/log/app
