@@ -1,4 +1,4 @@
-# Use Alpine Linux as the base image (much smaller than Debian)
+# Use Alpine Linux as the base image with Node.js
 FROM node:current-alpine
 
 # Install system dependencies using Alpine's package manager
@@ -8,7 +8,13 @@ RUN apk update && apk add --no-cache \
     wget \
     build-base \
     bash \
-    docker-cli
+    docker-cli \
+    docker-cli-buildx
+
+# Set up Docker BuildX
+RUN mkdir -p ~/.docker/cli-plugins && \
+    ln -sf /usr/lib/docker/cli-plugins/docker-buildx ~/.docker/cli-plugins/docker-buildx && \
+    chmod +x ~/.docker/cli-plugins/docker-buildx
 
 # Set working directory
 WORKDIR /app
