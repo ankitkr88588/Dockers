@@ -21,8 +21,7 @@ ARG GITHUB_TOKEN
 RUN git clone https://${GITHUB_TOKEN}@github.com/nub-coders/docker-handler/ .
 
 # Install Node.js dependencies and build frontend
-RUN npm install && \
-    npm run build
+RUN npm install
 
 # Make directory for logs
 RUN mkdir -p /var/log/app
