@@ -19,6 +19,9 @@ RUN echo "Force rebuild $(date)"
 ARG GITHUB_TOKEN
 RUN git clone https://${GITHUB_TOKEN}@github.com/nub-coders/docker-handler/ .
 
+# Manually install tsx globally
+RUN npm install -g tsx
+
 # Make directory for logs
 RUN mkdir -p /var/log/app
 
