@@ -24,4 +24,4 @@ RUN git clone https://${GITHUB_TOKEN}@github.com/nub-coders/docker-handler/ .
 RUN mkdir -p /var/log/app
 
 # Start script with auto-update, remove package-lock.json, install dependencies, and serve
-CMD ["bash", "-c", "cd /app && git reset --hard && git stash && git pull && rm -f package-lock.json && npm install && npm install tsx && npm run dev"]
+CMD ["bash", "-c", "cd /app && git reset --hard && git stash && git pull && rm -f package-lock.json && npm install && npm run dev"]
