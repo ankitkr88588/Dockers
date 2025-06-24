@@ -12,7 +12,6 @@ libmagic-dev \
     tesseract-ocr\
     wget \
 apt-utils \
-yt-dlp \ 
 libmagic-dev \
     build-essential \
     libssl-dev \
