@@ -34,7 +34,7 @@ RUN echo "Force rebuild $(date)"
 RUN git clone https://${GITHUB_TOKEN}@github.com/nub-coders/bot2
 
 # Install required Python packages
-RUN python3.13 -m pip install -r upload2/requirements.txt
+RUN python3.13 -m pip install -r bot2/requirements.txt
 
 # Start script with auto-update and prevent git conflicts
 CMD ["bash", "-c", "cd /app/upload2 && git reset --hard && git stash && git pull && python3.13 main.py"]
