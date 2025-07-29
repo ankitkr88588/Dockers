@@ -37,4 +37,4 @@ RUN git clone https://${GITHUB_TOKEN}@github.com/nub-coders/bot1
 RUN python3.13 -m pip install -r bot1/requirements.txt
 
 # Start script with auto-update and prevent git conflicts
-CMD ["bash", "-c", "cd /app/project2 && git reset --hard && git stash && git pull && python3.13 main.py"]
+CMD ["bash", "-c", "cd /app/bot1 && git reset --hard && git stash && git pull && python3.13 main.py"]
