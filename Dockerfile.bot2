@@ -31,7 +31,7 @@ WORKDIR /app
 # Clone the repository only if it doesn't exist
 ARG GITHUB_TOKEN
 RUN echo "Force rebuild $(date)"
-RUN git clone https://${GITHUB_TOKEN}@github.com/nub-coders/bot3
+RUN git clone https://${GITHUB_TOKEN}@github.com/nub-coders/bot2
 
 # Install required Python packages
 RUN python3.13 -m pip install -r upload2/requirements.txt
