@@ -17,8 +17,8 @@ WORKDIR /app
 # Clone the repository with authentication
 RUN echo "Force rebuild $(date)"
 ARG GITHUB_TOKEN
-RUN git clone https://${GITHUB_TOKEN}@github.com/nub-coders/docker-handler/ .
-RUN git config pull.rebase true
+RUN git clone https://${GITHUB_TOKEN}@github.com/nub-coders/
+RUN git config --global pull.rebase true
 
 # Make directory for logs
 RUN mkdir -p /var/log/app
