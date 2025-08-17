@@ -19,7 +19,8 @@ RUN echo "Force rebuild $(date)"
 ARG GITHUB_TOKEN
 RUN git clone https://${GITHUB_TOKEN}@github.com/nub-coders/docker-handler/ .
 RUN git config --global pull.rebase true
-RUN npm install -g tsx vite
+RUN npm install -g tsx
+RUN npm install -g vite
 # Make directory for logs
 RUN mkdir -p /var/log/app
 
